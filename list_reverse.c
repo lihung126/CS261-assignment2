@@ -2,14 +2,14 @@
  * This is the file in which you'll write a function to reverse a linked list.
  * Make sure to add your name and @oregonstate.edu email address below:
  *
- * Name:
- * Email:
+ * Name:Li Hung Chen
+ * Email:chenlih@oregonstate.edu
  */
 
 #include <stdio.h>
-
+#include <stdlib.h> 
 #include "list_reverse.h"
-
+#include<assert.h>
 /*
  * In this function, you will be passed the head of a singly-linked list, and
  * you should reverse the linked list and return the new head.  The reversal
@@ -24,5 +24,18 @@
  *   function should return NULL.
  */
 struct link* list_reverse(struct link* head) {
-  return NULL;
+  struct link* prev=NULL;
+  struct link* curr=head;
+  struct link* next=NULL;
+  
+  while(curr!=NULL)
+  {
+  	next=curr->next;			//store next 
+  	curr->next=prev;			//reverse curr's pointer
+  	
+  	prev=curr;				//move pointers ahead
+  	curr=next;
+  }
+  head=prev;
+  return head;
 }
